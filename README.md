@@ -1,6 +1,7 @@
 # Launching Linux Instance on AWS
  ## Provisioning an EC2 instance
- ![poll mokup](./2.png)
+ <img width="1280" alt="2" src="https://user-images.githubusercontent.com/30122596/224711661-6ba55b5f-510e-4f92-bdba-e4622508ba58.png">
+
  
  ----------------------
  ## SSH into the instance
@@ -8,8 +9,9 @@
    sudo chmod 0400 <armyandbtsforever>.pem <br>
   ssh -i <armyandbtsforever>. pem<br>
   ubuntu@<Public-IP-address>
+  <img width="1348" alt="connect" src="https://user-images.githubusercontent.com/30122596/224711804-509b73e0-e53c-4621-893c-b1181b0da89a.png">
+
   
-  ![poll mokup](./connect.png)
   
   -------------------------------
   ## Installing Apache Server
@@ -18,20 +20,24 @@
   
   > Run apache2 package installation<br>
   sudo apt install apache2
+  <img width="1280" alt="installapache2" src="https://user-images.githubusercontent.com/30122596/224711971-6250345a-e6a6-41bc-b8c9-71163b9822b3.png">
+
   
   
-  ![poll mokup](./installapache2.png)
 
 ---------------------
 ## Check the status of apache2 service in the OS
- > sudo systemctl status apache2
+ > sudo systemctl status apache2!
+ [Uploading systemctlstatusapache2.png…]()
+
  
- ![poll mokup](./systemctlstatusapache2.png)
+ 
  
  ---------------------------
  ## Input the instance public ip address in the browser to verify Apache2 Installation
- ![poll mokup](./welcomepageubuntu.png)
  
+ <img width="1348" alt="welcomepageubuntu" src="https://user-images.githubusercontent.com/30122596/224712574-d322935b-9e8f-4a78-82dc-28a6920ef5f0.png">
+
  ----------------------
 ## Install MYSQL
   When prompted, confirm installation by typing Y, and then ENTER.
@@ -41,9 +47,8 @@
   Log in to mysql after installation 
   this will connect to the MySQL server as the administrative database user root, which is inferred by the use of sudo when running thus command.
   > sudo mysql
-  
-  
-  ![poll mokup](./sudomysql.png)
+  <img width="571" alt="sudomysql" src="https://user-images.githubusercontent.com/30122596/224712725-f357678c-bdaa-46f6-9103-a5cc61df23a4.png">
+
   
   --------------------------
   Set a password for the root user using mysql_native_password as default authentication method 
@@ -57,7 +62,8 @@
   it's recommend that you run a security script that comes pre-installed with MYSQL. This script will remove some insecure default settings and lock down access to your database system.
   > sudo mysql_secure_installation
   
-  ![poll mokup](./ppassword.png)
+  <img width="752" alt="ppassword" src="https://user-images.githubusercontent.com/30122596/224712882-8d293fc5-93d3-4d12-84b7-49db36685023.png">
+
   
 
  This will ask if you want to configure the VALIDATE PASSWORD PLUGIN.
@@ -66,8 +72,9 @@ Note: Enabling this feature is something of a judgment call. If enabled, passwor
 ----------------------------------
 ##Confirm Mysql was successfully installed by logging into the console
 > sudo mysql -p
+<img width="636" alt="mysql-p" src="https://user-images.githubusercontent.com/30122596/224713040-17ff3729-0b8f-4d6b-8114-a30f1b086421.png">
 
-![poll mokup](./mysql-p.png)
+
 
 ### Exit mysql
 > exit 
@@ -89,14 +96,17 @@ Create the directory for projectlamp using ‘mkdir’ command and assign owners
 > sudo mkdir /var/www/test
   sudo chown -R $USER:$USER /var/www/test
 
-![poll mokup](./creatingvirtualhost.png)
-![poll mokup](./virtualhost2.png)
+<img width="636" alt="creatingvirtualhost" src="https://user-images.githubusercontent.com/30122596/224713680-238ba23e-fe08-46f1-9636-792743ef6fe5.png">
+
+<img width="636" alt="virtualhost2" src="https://user-images.githubusercontent.com/30122596/224713697-fc433d25-83af-4c27-ae75-cf3351fdd67b.png">
+
 
 Then, create and open a new configuration file in Apache’s sites-available directory using your preferred command-line editor. Here, we’ll be using vi or vim (They are the same by the way):
 
 >   sudo nano /etc/apache2/sites-available/test.conf
 
-![poll mokup](./test.conf.png)
+<img width="636" alt="test conf" src="https://user-images.githubusercontent.com/30122596/224713940-f4f21a20-1268-4cb3-8c97-f4a6cf39cfde.png">
+
 
 this creates a blank file. Pressing "i" on keyboard to enter insert mode. Then paste the following configuration into the file.
 
@@ -116,7 +126,9 @@ this creates a blank file. Pressing "i" on keyboard to enter insert mode. Then p
 
 </VirtualHost> 
 
-![poll mokup](./virtualhost4.png)
+<img width="636" alt="virtualhost4" src="https://user-images.githubusercontent.com/30122596/224714009-a0f851d8-b4d3-4c5a-9d4a-25b2d0795d9d.png">
+
+
 
 To save and close the file, simple hit esc on your keyboard and type :wq : for command w for write q for quit
 
@@ -139,7 +151,8 @@ Disable the default website that comes installed with Apache and check if your c
   your new website is now active, but the web root /var/www/projectlamp is still empty. Create an index.html file in that location so that we can test that the virtual host works as expected:
   >sudo echo 'Hello LAMP from hostname' $(curl -s http://169.254.169.254/latest/meta-data/public-hostname) 'with public IP' $(curl -s http://169.254.169.254/latest/meta-data/public-ipv4) > /var/www/projectlamp/index.html
 
-![poll mokup](./url.png)
+<img width="1280" alt="url" src="https://user-images.githubusercontent.com/30122596/224714301-9ae2530e-b081-4a07-9e59-ba6b6c872d14.png">
+
 
   Now go to your browser and try to open your website URL using IP address:
   >http://<Public-IP-Address>:80
@@ -153,7 +166,8 @@ Disable the default website that comes installed with Apache and check if your c
 
 >  sudo nano /etc/apache2/mods-enabled/dir.conf
 
-![poll mokup](./sudonano.png)
+<img width="639" alt="sudonano" src="https://user-images.githubusercontent.com/30122596/224714384-fc73f619-e130-4fbc-86a4-341b94fdeb83.png">
+
 
 Copy and paste the below, save.
 
